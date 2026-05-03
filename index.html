@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Biteforest</title>
+    <meta name="description" content="A small studio building thoughtful apps." />
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --fg: #e9e0cf;
+        --muted: #8a8170;
+        --amber: #e8a33c;
+        --border: #2a2520;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+      .wordmark {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-weight: 700;
+        background: linear-gradient(180deg, #f6d08a 0%, #e8a33c 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+      .tagline {
+        color: var(--muted);
+        font-size: 1rem;
+        max-width: 30rem;
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .projects {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        max-width: 22rem;
+      }
+      .project {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        text-decoration: none;
+        color: var(--fg);
+        transition: border-color 0.2s, background 0.2s;
+      }
+      .project:hover {
+        border-color: var(--amber);
+        background: rgba(232, 163, 60, 0.05);
+      }
+      .project-name { font-weight: 600; }
+      .project-meta { color: var(--muted); font-size: 0.85rem; }
+      footer {
+        margin-top: 4rem;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+      footer a { color: var(--amber); text-decoration: none; }
+      footer a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <h1 class="wordmark">biteforest</h1>
+    <p class="tagline">A small studio building thoughtful apps.</p>
+
+    <div class="projects">
+      <a class="project" href="/timewarp/">
+        <span class="project-name">TimeWarp</span>
+        <span class="project-meta">Android</span>
+      </a>
+    </div>
+
+    <footer>
+      <a href="mailto:dev@fieldcart.app">dev@fieldcart.app</a>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TimeWarp — Biteforest</title>
+    <meta name="description" content="TimeWarp turns your everyday locations into living timelapses." />
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --fg: #e9e0cf;
+        --muted: #8a8170;
+        --amber: #e8a33c;
+        --border: #2a2520;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        min-height: 100vh;
+        padding: 3rem 1.5rem;
+        line-height: 1.6;
+      }
+      main { max-width: 32rem; margin: 0 auto; }
+      .breadcrumb {
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+      }
+      .breadcrumb a { color: var(--muted); text-decoration: none; }
+      .breadcrumb a:hover { color: var(--amber); }
+      h1 {
+        font-size: clamp(2rem, 6vw, 3rem);
+        font-weight: 700;
+        background: linear-gradient(180deg, #f6d08a 0%, #e8a33c 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+      .tagline {
+        color: var(--muted);
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+      }
+      p { margin-bottom: 1.25rem; color: var(--fg); }
+      .links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 2rem;
+      }
+      .link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        text-decoration: none;
+        color: var(--fg);
+        transition: border-color 0.2s, background 0.2s;
+      }
+      .link:hover {
+        border-color: var(--amber);
+        background: rgba(232, 163, 60, 0.05);
+      }
+      .link-arrow { color: var(--amber); }
+      footer {
+        margin-top: 4rem;
+        color: var(--muted);
+        font-size: 0.8rem;
+        text-align: center;
+      }
+      footer a { color: var(--amber); text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="breadcrumb"><a href="/">biteforest</a> / timewarp</div>
+
+      <h1>TimeWarp</h1>
+      <p class="tagline">Watch the world transform, one photo at a time.</p>
+
+      <p>
+        TimeWarp turns your everyday locations into living timelapses. Drop a pin at any
+        spot — your front porch, a construction site, a growing garden — and take a photo.
+        Every time you return, TimeWarp reminds you to capture another shot, with a ghost
+        overlay of your last photo to line up the perfect match.
+      </p>
+
+      <p>
+        Over days, weeks, and months, watch your world transform through beautiful
+        timelapse playback. All photos stay on your device. Nothing is uploaded.
+      </p>
+
+      <div class="links">
+        <a class="link" href="/timewarp/privacy.html">
+          <span>Privacy Policy</span>
+          <span class="link-arrow">→</span>
+        </a>
+      </div>
+
+      <footer>
+        <a href="mailto:dev@fieldcart.app">dev@fieldcart.app</a>
+      </footer>
+    </main>
+  </body>
+</html>
