@@ -67,6 +67,24 @@
       }
       .project-name { font-weight: 600; }
       .project-meta { color: var(--muted); font-size: 0.85rem; }
+      .project-links {
+        display: flex;
+        gap: 0.6rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      .project-links a {
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .project-links a:hover { color: var(--amber); }
+      .project-links .sep { opacity: 0.5; }
+      div.project { cursor: default; }
+      div.project:hover {
+        border-color: var(--border);
+        background: transparent;
+      }
       footer {
         margin-top: 4rem;
         color: var(--muted);
@@ -89,10 +107,16 @@
         <span class="project-name">TimeWarp</span>
         <span class="project-meta">Android</span>
       </a>
-      <a class="project" href="https://flightglobe.biteforest.art" target="_blank" rel="noopener">
+      <div class="project">
         <span class="project-name">FlightGlobe</span>
-        <span class="project-meta">Web ↗</span>
-      </a>
+        <span class="project-links">
+          <a href="https://flightglobe.biteforest.art" target="_blank" rel="noopener">Web ↗</a>
+          <span class="sep">·</span>
+          <a href="https://apps.apple.com/us/app/flightglobe/id6767959306" target="_blank" rel="noopener">iOS ↗</a>
+          <span class="sep">·</span>
+          <a href="https://play.google.com/store/apps/details?id=art.biteforest.flightglobe" target="_blank" rel="noopener">Android ↗</a>
+        </span>
+      </div>
       <a class="project" href="https://play.google.com/store/apps/details?id=app.fieldcart.twa" target="_blank" rel="noopener">
         <span class="project-name">FieldCart</span>
         <span class="project-meta">Android ↗</span>
