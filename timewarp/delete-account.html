@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delete your TimeWarp account — Biteforest</title>
+    <meta name="description" content="Request deletion of your TimeWarp account and all of your cloud data." />
+    <style>
+      :root {
+        --bg: #0a0a0a; --fg: #e9e0cf; --muted: #8a8170;
+        --amber: #e8a33c; --border: #2a2520; --danger: #d05a4a;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background: var(--bg); color: var(--fg);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        min-height: 100vh; padding: 3rem 1.5rem; line-height: 1.7;
+      }
+      main { max-width: 32rem; margin: 0 auto; }
+      .breadcrumb { color: var(--muted); font-size: 0.85rem; margin-bottom: 2rem; }
+      .breadcrumb a { color: var(--muted); text-decoration: none; }
+      .breadcrumb a:hover { color: var(--amber); }
+      h1 { font-size: 1.8rem; font-weight: 700; color: var(--amber); margin-bottom: 1rem; }
+      p { margin-bottom: 1rem; }
+      a { color: var(--amber); }
+      strong { color: var(--fg); }
+      button {
+        font: inherit; cursor: pointer; width: 100%; padding: 0.85rem 1rem;
+        border-radius: 0.5rem; border: 1px solid var(--border); margin-top: 0.75rem;
+        background: #14110d; color: var(--fg);
+      }
+      button.primary { background: var(--amber); color: #0a0a0a; border-color: var(--amber); font-weight: 600; }
+      button.danger { background: var(--danger); color: #0a0a0a; border-color: var(--danger); font-weight: 600; }
+      button:disabled { opacity: 0.5; cursor: default; }
+      input {
+        font: inherit; width: 100%; padding: 0.75rem 1rem; border-radius: 0.5rem;
+        border: 1px solid var(--border); background: #14110d; color: var(--fg); margin-top: 0.75rem;
+      }
+      .card { border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; background: #100d0a; margin-top: 1.5rem; }
+      .muted { color: var(--muted); font-size: 0.9rem; }
+      .hidden { display: none; }
+      footer { margin-top: 3rem; color: var(--muted); font-size: 0.8rem; text-align: center; }
+      #status { margin-top: 1rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="breadcrumb"><a href="/">biteforest</a> / <a href="/timewarp/">timewarp</a> / delete account</div>
+      <h1>Delete your TimeWarp account</h1>
+      <p>
+        This permanently deletes your TimeWarp account and <strong>all of your cloud
+        data</strong> — your synced warp points and photos. This cannot be undone. Photos
+        already stored on your own device are not affected by this page.
+      </p>
+      <p class="muted">
+        To verify it's really you, sign in with the same method you use in the app.
+      </p>
+
+      <div id="loading" class="card">Loading…</div>
+
+      <div id="signin" class="card hidden">
+        <p>Sign in to delete your account:</p>
+        <button class="primary" id="google">Continue with Google</button>
+        <input id="email" type="email" inputmode="email" placeholder="you@email.com" />
+        <button id="emailBtn">Email me a sign-in link</button>
+        <p id="emailNote" class="muted hidden">Check your email for a sign-in link, then return here.</p>
+      </div>
+
+      <div id="confirm" class="card hidden">
+        <p>Signed in as <strong id="who"></strong>.</p>
+        <button class="danger" id="delete">Permanently delete my account &amp; all data</button>
+        <button id="signout">Sign out</button>
+      </div>
+
+      <div id="done" class="card hidden">
+        <p><strong>Your account and all cloud data have been deleted.</strong></p>
+        <p class="muted">You can close this page.</p>
+      </div>
+
+      <p id="status"></p>
+
+      <footer>Questions? <a href="mailto:dev@fieldcart.app">dev@fieldcart.app</a> · <a href="/timewarp/privacy.html">Privacy policy</a></footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+      const SB_URL = 'https://qjplsafaitrkatauhxke.supabase.co';
+      const SB_KEY = 'sb_publishable_FZONzlUd1NR3rg2J0Ig_Vw_1cVbmISE';
+      const REDIRECT = location.origin + location.pathname; // back to this page
+      const client = window.supabase.createClient(SB_URL, SB_KEY, {
+        auth: { flowType: 'pkce', detectSessionInUrl: true, persistSession: true, autoRefreshToken: true },
+      });
+
+      const $ = (id) => document.getElementById(id);
+      const show = (id) => { ['loading','signin','confirm','done'].forEach((s) => $(s).classList.toggle('hidden', s !== id)); };
+      const setStatus = (msg, danger) => { $('status').textContent = msg || ''; $('status').style.color = danger ? '#d05a4a' : '#8a8170'; };
+
+      async function render() {
+        const { data: { session } } = await client.auth.getSession();
+        if (session && session.user) {
+          $('who').textContent = session.user.email || session.user.id;
+          show('confirm');
+        } else {
+          show('signin');
+        }
+      }
+
+      $('google').onclick = () =>
+        client.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: REDIRECT } });
+
+      $('emailBtn').onclick = async () => {
+        const email = $('email').value.trim();
+        if (!email) return setStatus('Enter your email first.', true);
+        const { error } = await client.auth.signInWithOtp({ email, options: { emailRedirectTo: REDIRECT } });
+        if (error) return setStatus(error.message, true);
+        $('emailNote').classList.remove('hidden');
+        setStatus('');
+      };
+
+      $('signout').onclick = async () => { await client.auth.signOut(); setStatus(''); render(); };
+
+      $('delete').onclick = async () => {
+        if (!confirm('Permanently delete your account and all cloud data? This cannot be undone.')) return;
+        $('delete').disabled = true;
+        setStatus('Deleting…');
+        const { error } = await client.functions.invoke('delete-account');
+        if (error) { $('delete').disabled = false; return setStatus('Could not delete: ' + error.message + '. Please try again or email dev@fieldcart.app.', true); }
+        await client.auth.signOut();
+        setStatus('');
+        show('done');
+      };
+
+      render();
+    </script>
+  </body>
+</html>
