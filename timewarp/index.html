@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TimeWarp — Biteforest</title>
-    <meta name="description" content="TimeWarp turns your everyday locations into living timelapses." />
+    <meta name="description" content="TimeWarp turns your everyday locations into living timelapses — private on your device, or shared with a community. Post a bounty to get a photo from anywhere." />
     <style>
       :root {
         --bg: #0a0a0a;
@@ -46,6 +46,25 @@
         margin-bottom: 2.5rem;
       }
       p { margin-bottom: 1.25rem; color: var(--fg); }
+      section { margin: 2.5rem 0; }
+      h2 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--amber);
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.01em;
+      }
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.15rem 0.6rem;
+        margin-bottom: 0.75rem;
+      }
       .links {
         display: flex;
         flex-direction: column;
@@ -85,16 +104,50 @@
       <p class="tagline">Watch the world transform, one photo at a time.</p>
 
       <p>
-        TimeWarp turns your everyday locations into living timelapses. Drop a pin at any
-        spot — your front porch, a construction site, a growing garden — and take a photo.
-        Every time you return, TimeWarp reminds you to capture another shot, with a ghost
-        overlay of your last photo to line up the perfect match.
+        Drop a pin at any spot — your front porch, a construction site, a growing
+        garden — and take a photo. Every time you return, TimeWarp reminds you and
+        shows a <strong>ghost overlay</strong> of your last shot, so you line up the
+        perfect match. Over days, weeks, and months, play it back as a beautiful
+        timelapse and watch your world change.
       </p>
 
-      <p>
-        Over days, weeks, and months, watch your world transform through beautiful
-        timelapse playback. All photos stay on your device. Nothing is uploaded.
-      </p>
+      <section>
+        <span class="eyebrow">Yours alone</span>
+        <h2>Private by default</h2>
+        <p>
+          Use TimeWarp entirely on your own — no account, nothing uploaded, every
+          photo stays on your device. A personal time machine for the places you
+          love, and it never has to leave your phone.
+        </p>
+      </section>
+
+      <section>
+        <span class="eyebrow">Or open it up</span>
+        <h2>A timelapse, captured by many hands</h2>
+        <p>
+          Publish a spot as a <strong>community point</strong> and let anyone nearby
+          add their own frames — a shared, ever-growing timelapse of a place, built
+          by everyone who passes through. Explore public points around you on the
+          map and add to the ones you visit.
+        </p>
+      </section>
+
+      <section>
+        <span class="eyebrow">Eyes anywhere</span>
+        <h2>Post a bounty. Get the shot.</h2>
+        <p>
+          Want to know what a place looks like <em>right now</em> — a trailhead, a
+          surf break, a job site — but can't get there? Post a <strong>bounty</strong>
+          and someone nearby will travel there and capture it for you. Or earn by
+          fulfilling bounties around you.
+        </p>
+        <p>
+          Every fulfillment is <strong>verified at the location by GPS</strong>, and
+          photographers line up their shot to your reference with the ghost overlay —
+          so you get real, current conditions, framed the way you asked. Photographers
+          are paid through Stripe for their time and travel.
+        </p>
+      </section>
 
       <div class="links">
         <a class="link" href="https://apps.apple.com/us/app/timewarp-timelapse/id6768214480" target="_blank" rel="noopener">
