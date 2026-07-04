@@ -53,6 +53,13 @@
       li { margin-bottom: 0.5rem; }
       a { color: var(--amber); }
       strong { color: var(--fg); font-weight: 600; }
+      code {
+        background: rgba(232, 163, 60, 0.12);
+        color: var(--amber);
+        padding: 0.05rem 0.35rem;
+        border-radius: 3px;
+        font-size: 0.9em;
+      }
       footer {
         margin-top: 4rem;
         color: var(--muted);
@@ -66,7 +73,7 @@
       <div class="breadcrumb"><a href="/">biteforest</a> / <a href="/timewarp/">timewarp</a> / privacy</div>
 
       <h1>Privacy Policy</h1>
-      <p class="effective">Effective date: June 21, 2026</p>
+      <p class="effective">Effective date: July 4, 2026</p>
 
       <p>
         This privacy policy describes how the TimeWarp app ("the app", "we", "us")
@@ -138,6 +145,57 @@
         third-party analytics, advertising, or tracking SDKs in the app.
       </p>
 
+      <h2>Google user data</h2>
+      <p>
+        This section describes how TimeWarp accesses, uses, stores, and shares Google
+        user data, in accordance with the
+        <a href="https://developers.google.com/terms/api-services-user-data-policy">Google
+        API Services User Data Policy</a>. Google user data is involved
+        <strong>only if you choose "Continue with Google"</strong> to sign in. If you do
+        not use Google sign-in, TimeWarp never requests or receives any Google user data.
+      </p>
+      <p><strong>Data we access.</strong> When you sign in with Google, we request only
+        Google's basic non-sensitive sign-in scopes
+        (<code>openid</code>, <code>email</code>, and <code>profile</code>). Through these
+        scopes Google provides us with:</p>
+      <ul>
+        <li>Your <strong>email address</strong> and whether Google has verified it;</li>
+        <li>Your <strong>basic profile information</strong> — your name and profile
+          picture, if present on your Google account; and</li>
+        <li>Your <strong>Google account identifier</strong> (a unique ID that lets us
+          recognize your account on return visits).</li>
+      </ul>
+      <p>
+        We request <strong>no sensitive or restricted scopes</strong>. TimeWarp does not
+        access your Gmail, Google Drive, Google Calendar, Contacts, Photos, or any other
+        Google service or data beyond the basic sign-in information listed above.
+      </p>
+      <p><strong>How we use it.</strong> We use this Google user data for a single
+        purpose: <strong>authentication</strong> — to create and identify your TimeWarp
+        account so you can back up your warp points and photos and sync them across your
+        devices. We do not use Google user data for any other purpose.</p>
+      <p><strong>How we store it.</strong> Your email address and account identifier are
+        stored in our authentication system, operated by our backend processor Supabase
+        (see below), so we can recognize your account when you return. This is the same
+        account record described in "If you sign in" above.</p>
+      <p><strong>How we share it.</strong> We do <strong>not</strong> sell, rent, or share
+        your Google user data with third parties, and we do <strong>not</strong> use it
+        for advertising or to train any AI or machine-learning models. It is disclosed
+        only to Supabase, strictly as a data processor that stores it on our behalf to
+        operate the sign-in and sync service.</p>
+      <p>
+        TimeWarp's use of information received from Google APIs adheres to the
+        <a href="https://developers.google.com/terms/api-services-user-data-policy">Google
+        API Services User Data Policy</a>, including its Limited Use requirements.
+      </p>
+      <p><strong>Deleting your Google data.</strong> You can permanently delete your
+        account and all associated data — including the email address and identifier
+        obtained through Google sign-in — at any time using "Delete account &amp; cloud
+        data" in Settings (see "Your control over your data" below). You can also revoke
+        TimeWarp's access to your Google account at any time from your
+        <a href="https://myaccount.google.com/permissions">Google Account permissions</a>
+        page.</p>
+
       <h2>Service providers</h2>
       <p>
         When cloud features are enabled, we use the following processors strictly to
@@ -151,8 +209,10 @@
         </li>
         <li>
           <strong>Apple and Google</strong> — only if you choose "Sign in with Apple" or
-          "Continue with Google," to verify your identity at sign-in. Their handling of
-          that sign-in is governed by their own privacy policies.
+          "Continue with Google," to verify your identity at sign-in. See the
+          <strong>"Google user data"</strong> section above for exactly what Google data
+          is accessed and how it is used. Their handling of that sign-in is governed by
+          their own privacy policies.
         </li>
       </ul>
 
@@ -204,11 +264,11 @@
       <h2>Contact</h2>
       <p>
         If you have any questions about this privacy policy or the app, please email
-        <a href="mailto:dev@fieldcart.app">dev@fieldcart.app</a>.
+        <a href="mailto:dev@biteforest.art">dev@biteforest.art</a>.
       </p>
 
       <footer>
-        <a href="mailto:dev@fieldcart.app">dev@fieldcart.app</a>
+        <a href="mailto:dev@biteforest.art">dev@biteforest.art</a>
       </footer>
     </main>
   </body>
