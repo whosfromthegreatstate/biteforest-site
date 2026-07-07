@@ -3,8 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TimeWarp — Biteforest</title>
-    <meta name="description" content="TimeWarp turns your everyday locations into living timelapses — private on your device, or shared with a community. Post a bounty to get a photo from anywhere." />
+    <title>TimeWarp — see time flow over the places you love</title>
+    <meta name="description" content="TimeWarp turns your phone into a time-travelling photographer. Mark a place, and it tells you exactly when to come back and snap — then plays the days, seasons, and years back as a timelapse. Explore community timelapses, or commission a photo from anywhere." />
+
+    <!-- Social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TimeWarp — turn your phone into a time-travelling photographer" />
+    <meta property="og:description" content="Mark a place. TimeWarp tells you when to come back and snap, lines up the exact shot, and plays time flowing over it as a timelapse. Build timelapses with a community, or commission a photo from anywhere on earth." />
+    <meta property="og:url" content="https://biteforest.art/timewarp/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TimeWarp — see time flow over the places you love" />
+    <meta name="twitter:description" content="A time-travelling photographer in your pocket. Watch your favorite places change across days, seasons, and years." />
+
     <style>
       :root {
         --bg: #0a0a0a;
@@ -15,7 +25,9 @@
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        background: var(--bg);
+        background:
+          radial-gradient(1100px 520px at 50% -12%, rgba(232,163,60,0.10), transparent 62%),
+          var(--bg);
         color: var(--fg);
         font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         min-height: 100vh;
@@ -31,21 +43,23 @@
       .breadcrumb a { color: var(--muted); text-decoration: none; }
       .breadcrumb a:hover { color: var(--amber); }
       h1 {
-        font-size: clamp(2rem, 6vw, 3rem);
+        font-size: clamp(2.2rem, 7vw, 3.2rem);
         font-weight: 700;
         background: linear-gradient(180deg, #f6d08a 0%, #e8a33c 100%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 1rem;
+        margin-bottom: 0.6rem;
         letter-spacing: -0.02em;
       }
       .tagline {
-        color: var(--muted);
-        font-size: 1rem;
-        margin-bottom: 2.5rem;
+        color: var(--fg);
+        font-size: clamp(1.05rem, 3.4vw, 1.25rem);
+        margin-bottom: 1.5rem;
       }
       p { margin-bottom: 1.25rem; color: var(--fg); }
+      .lede { color: var(--muted); }
+      em.hot { color: var(--amber); font-style: normal; }
       section { margin: 2.5rem 0; }
       h2 {
         font-size: 1.15rem;
@@ -82,9 +96,13 @@
         color: var(--fg);
         transition: border-color 0.2s, background 0.2s;
       }
+      .link.primary {
+        border-color: rgba(232,163,60,0.5);
+        background: rgba(232,163,60,0.06);
+      }
       .link:hover {
         border-color: var(--amber);
-        background: rgba(232, 163, 60, 0.05);
+        background: rgba(232, 163, 60, 0.09);
       }
       .link-arrow { color: var(--amber); }
       footer {
@@ -101,60 +119,72 @@
       <div class="breadcrumb"><a href="/">biteforest</a> / timewarp</div>
 
       <h1>TimeWarp</h1>
-      <p class="tagline">Watch the world transform, one photo at a time.</p>
+      <p class="tagline">Turn your phone into a time-travelling photographer.</p>
 
-      <p>
-        Drop a pin at any spot — your front porch, a construction site, a growing
-        garden — and take a photo. Every time you return, TimeWarp reminds you and
-        shows a <strong>ghost overlay</strong> of your last shot, so you line up the
-        perfect match. Over days, weeks, and months, play it back as a beautiful
-        timelapse and watch your world change.
+      <p class="lede">
+        Pick a place you love. TimeWarp remembers it, tells you exactly
+        <em class="hot">when to come back and snap</em>, floats a ghost of your last shot on
+        the camera so every frame lines up perfectly, and plays the days, seasons, and years
+        back as a timelapse — time itself, flowing over the spots that matter to you.
       </p>
+
+      <section>
+        <span class="eyebrow">Why it's rad</span>
+        <h2>One place, all of time, in a few seconds</h2>
+        <p>
+          A single photo is a moment. A hundred photos of the <em>same</em> place, lined up
+          just right, is a superpower — you get to <em>watch</em> a glacier retreat, a skyline
+          rise, a maple burn red and go bare, snow bury a trailhead and melt away. TimeWarp
+          makes that effortless: it nudges you when it's time, keeps every frame aligned, and
+          stitches the whole story into buttery playback you'll actually want to share.
+        </p>
+      </section>
 
       <section>
         <span class="eyebrow">Yours alone</span>
         <h2>Private by default</h2>
         <p>
-          Use TimeWarp entirely on your own — no account, nothing uploaded, every
-          photo stays on your device. A personal time machine for the places you
-          love, and it never has to leave your phone.
+          Want to keep it just for you? You can. Personal warp points are yours — a private
+          time machine for the places you love, synced across your own devices and shared with
+          no one unless you choose to.
         </p>
       </section>
 
       <section>
-        <span class="eyebrow">Or open it up</span>
-        <h2>A timelapse, captured by many hands</h2>
+        <span class="eyebrow">Across time <em>and</em> space</span>
+        <h2>A timelapse built by many hands</h2>
         <p>
-          Publish a spot as a <strong>community point</strong> and let anyone nearby
-          add their own frames — a shared, ever-growing timelapse of a place, built
-          by everyone who passes through. Explore public points around you on the
-          map and add to the ones you visit.
+          Open the map and you'll find <strong>community warp points</strong> other people
+          started. Drop by, add your frame, and help grow a shared timelapse of a place that no
+          single person could capture alone — a street corner, a mountain, a mural — recorded by
+          everyone who passes through it, over years.
         </p>
       </section>
 
       <section>
         <span class="eyebrow">Eyes anywhere</span>
-        <h2>Post a bounty. Get the shot.</h2>
+        <h2>Commission a shot from across the world</h2>
         <p>
-          Want to know what a place looks like <em>right now</em> — a trailhead, a
-          surf break, a job site — but can't get there? Post a <strong>bounty</strong>
-          and someone nearby will travel there and capture it for you. Or earn by
-          fulfilling bounties around you.
+          Want to see somewhere you can't be <em>right now</em> — sunrise at a mountain pass,
+          cherry blossoms two states away, the surf at your hometown break? Post a
+          <strong>bounty</strong> and pay a real person to go capture it. Or flip it around and
+          <strong>earn</strong> by fulfilling bounties near you. It's a new way to reach across
+          the map — and across time — and connect with people through the places you both care about.
         </p>
         <p>
           Every fulfillment is <strong>verified at the location by GPS</strong>, and
-          photographers line up their shot to your reference with the ghost overlay —
-          so you get real, current conditions, framed the way you asked. Photographers
-          are paid through Stripe for their time and travel.
+          photographers line up their shot to your reference with the ghost overlay — so you get
+          real, current conditions, framed the way you asked. Photographers are paid through
+          Stripe for their time and travel.
         </p>
       </section>
 
       <div class="links">
-        <a class="link" href="https://apps.apple.com/us/app/timewarp-timelapse/id6768214480" target="_blank" rel="noopener">
+        <a class="link primary" href="https://apps.apple.com/us/app/timewarp-timelapse/id6768214480" target="_blank" rel="noopener">
           <span>Download on the App Store</span>
           <span class="link-arrow">↗</span>
         </a>
-        <a class="link" href="https://play.google.com/store/apps/details?id=art.biteforest.timewarp" target="_blank" rel="noopener">
+        <a class="link primary" href="https://play.google.com/store/apps/details?id=art.biteforest.timewarp" target="_blank" rel="noopener">
           <span>Get it on Google Play</span>
           <span class="link-arrow">↗</span>
         </a>
