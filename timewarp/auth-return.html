@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>TimeWarp — signing you in</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --fg: #e9e0cf;
+        --muted: #8a8170;
+        --amber: #e8a33c;
+        --border: #2a2520;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+      .card { max-width: 26rem; }
+      h1 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(180deg, #f6d08a 0%, #e8a33c 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      p { color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
+      .open-btn {
+        display: inline-block;
+        padding: 0.85rem 2.2rem;
+        border-radius: 0.6rem;
+        background: linear-gradient(180deg, #f6d08a 0%, #e8a33c 100%);
+        color: #1a1408;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1rem;
+        box-shadow: 0 0 24px rgba(232, 163, 60, 0.35);
+      }
+      .hint {
+        margin-top: 1.75rem;
+        font-size: 0.8rem;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+        padding-top: 1.25rem;
+      }
+      .hidden { display: none; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div id="ok">
+        <h1>You're signed in</h1>
+        <p>Finishing up in the TimeWarp app&hellip;</p>
+        <a id="open" class="open-btn" href="#">Open TimeWarp</a>
+        <p class="hint">
+          Nothing happening? Open this link on the phone that has TimeWarp
+          installed &mdash; or just type the 6-digit code from the email into
+          the app instead.
+        </p>
+      </div>
+      <div id="err" class="hidden">
+        <h1>Link expired</h1>
+        <p id="errmsg">
+          This sign-in link is no longer valid. Open TimeWarp and request a
+          fresh code &mdash; the 6-digit code in a new email always works.
+        </p>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var code = params.get('code');
+        var error = params.get('error') || params.get('error_code');
+
+        if (!code || error) {
+          document.getElementById('ok').classList.add('hidden');
+          document.getElementById('err').classList.remove('hidden');
+          return;
+        }
+
+        var scheme = 'art.biteforest.timewarp://auth-callback?code=' + encodeURIComponent(code);
+        // Chrome on Android needs an intent:// URL to hop into the app without
+        // a user gesture; everything else takes the raw custom scheme.
+        var isAndroid = /android/i.test(navigator.userAgent);
+        var target = isAndroid
+          ? 'intent://auth-callback?code=' + encodeURIComponent(code) +
+            '#Intent;scheme=art.biteforest.timewarp;package=art.biteforest.timewarp;end'
+          : scheme;
+
+        document.getElementById('open').setAttribute('href', target);
+        // Auto-attempt; the button stays as the reliable gesture-backed path.
+        setTimeout(function () { location.href = target; }, 400);
+      })();
+    </script>
+  </body>
+</html>
